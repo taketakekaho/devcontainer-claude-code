@@ -22,7 +22,7 @@
   },
 
   // コンテナ作成後に一度だけ実行（Claude Code CLI + pnpm）
-  "postCreateCommand": "npm install -g @anthropic-ai/claude-code pnpm && echo 'Dev container ready!'",
+  "postCreateCommand": "curl -fsSL https://claude.ai/install.sh | bash && npm install -g pnpm && echo 'Dev container ready!'",
 
   // Mac の ~/.claude をコンテナにマウント（個人設定・認証を引き継ぐ）
   "mounts": [
