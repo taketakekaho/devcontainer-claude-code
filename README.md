@@ -97,6 +97,9 @@ python3 --version # → Python 3.12.x
 # Claude Code が使える
 claude            # → Claude Code が起動
 
+# Codex CLI が使える
+codex             # → Codex CLI が起動
+
 # GitHub CLI が使える
 gh --version      # → gh version x.x.x
 ```
@@ -119,16 +122,22 @@ gh --version      # → gh version x.x.x
 | pnpm | latest | Node.js のパッケージ管理（npm より高速） |
 | GitHub CLI | latest | ターミナルから PR や Issue を操作 |
 | Claude Code | latest | AI ペアプログラミングツール |
+| Codex CLI | latest | AI コーディングエージェント（OpenAI） |
 
-## Claude Code の個人設定について
+## 個人設定の引き継ぎ
 
-Mac 側の `~/.claude/` フォルダがコンテナ内に自動マウントされます。これにより、Mac で設定した以下の内容がコンテナ内でもそのまま使えます。
+Mac 側の `~/.claude/` と `~/.codex/` がコンテナ内に自動マウントされます。これにより、Mac で設定した以下の内容がコンテナ内でもそのまま使えます。
 
+### Claude Code
 - **スキル** — `/explain` などのカスタムコマンド
 - **ルール** — コーディング規約、セキュリティルール
 - **エージェント** — code-reviewer、tdd-guide など
 - **フック** — 自動フォーマット、安全チェック
 - **認証情報** — API キーの再設定は不要
+
+### Codex CLI
+- **認証トークン** — Mac 側で ChatGPT サインイン済みなら再認証不要
+- 未認証の場合は、先に Mac 側で `codex` を起動して ChatGPT サインインを済ませてください
 
 ## チームでの利用
 

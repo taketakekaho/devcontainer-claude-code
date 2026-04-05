@@ -21,12 +21,13 @@
     }
   },
 
-  // コンテナ作成後に一度だけ実行（Claude Code CLI + pnpm）
-  "postCreateCommand": "curl -fsSL https://claude.ai/install.sh | bash && npm install -g pnpm && echo 'Dev container ready!'",
+  // コンテナ作成後に一度だけ実行（Claude Code CLI + Codex CLI + pnpm）
+  "postCreateCommand": "curl -fsSL https://claude.ai/install.sh | bash && npm install -g @openai/codex pnpm && echo 'Dev container ready!'",
 
-  // Mac の ~/.claude をコンテナにマウント（個人設定・認証を引き継ぐ）
+  // Mac の設定をコンテナにマウント（個人設定・認証を引き継ぐ）
   "mounts": [
-    "source=${localEnv:HOME}/.claude,target=/home/vscode/.claude,type=bind,consistency=cached"
+    "source=${localEnv:HOME}/.claude,target=/home/vscode/.claude,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.codex,target=/home/vscode/.codex,type=bind,consistency=cached"
   ],
 
   // VS Code 拡張機能（チーム共通）
